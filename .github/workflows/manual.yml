@@ -1,18 +1,10 @@
 on: 
-  workflow_dispatch:
-    inputs:
-      evnironment:
-        description: Choose environment
-        required: true
-        default: "staging"
-        type: choice
-        options:
-          - staging
-          - production
+  repository_dispatch:
+    types: [incident_repot]
 
 jobs:
-  deploy:
+  handle_incident:
     runs-on: ubuntu-latest
     steps:
-      - name: deploy application
-        run: echo "deploy application to ${{ inputs.evnironment }}"
+      - name: Print incident details
+        run: echo "incident repoted"
